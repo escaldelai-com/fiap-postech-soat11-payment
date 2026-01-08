@@ -1,0 +1,36 @@
+<Solution>
+  <Folder Name="/adapters/" />
+  <Folder Name="/adapters/input/">
+    <Project Path="Restaurant.Payment.Facade/Restaurant.Payment.Facade.csproj" Id="356d71e3-ab66-4e45-bc4d-9ab5bb68024f" />
+    <Project Path="Restaurant.Payment.Presenter/Restaurant.Payment.Presenter.csproj" Id="89234b50-ef97-42df-b319-767a9fb89134" />
+    <Project Path="Restaurant.Payment.WebApi/Restaurant.Payment.WebApi.csproj" Id="48625309-5442-434e-ad7c-6750ad2a6ec5" />
+  </Folder>
+  <Folder Name="/adapters/output/">
+    <Project Path="Restaurant.Payment.Data/Restaurant.Payment.Data.csproj" Id="3e829289-f64d-4773-9ca4-af87ad3d1d99" />
+    <Project Path="Restaurant.Payment.ExternalServices/Restaurant.Payment.ExternalServices.csproj" Id="762e716e-9623-4eb2-8ed4-a55985405bbb" />
+  </Folder>
+  <Folder Name="/core/">
+    <Project Path="Restaurant.Payment.Application/Restaurant.Payment.Application.csproj" Id="0723acc8-0c9e-4b91-9eaa-14700651958b" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/kubernetes/">
+    <File Path="init-k8s.cmd" />
+  </Folder>
+  <Folder Name="/Solution Items/kubernetes/app/">
+    <File Path="app-pay-ingress.yaml" />
+    <File Path="app-pay-service.yaml" />
+    <File Path="app-pay.yaml" />
+    <File Path="Dockerfile" />
+  </Folder>
+  <Folder Name="/Solution Items/kubernetes/mongodb/">
+    <File Path="mongo-pay-secrets.yaml" />
+    <File Path="mongo-pay-service.yaml" />
+    <File Path="mongo-pay.yaml" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="Restaurant.Payment.Application.Test/Restaurant.Payment.Application.Test.csproj" Id="7cc1d137-b103-4f6b-bdcf-3f36afe0548e" />
+  </Folder>
+</Solution>

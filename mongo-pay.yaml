@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-pay
+  labels:
+    app: mongo-pay
+spec:
+  serviceName: mongo-pay
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-pay
+  template:
+    metadata:
+      labels:
+        app: mongo-pay
+    spec:
+      containers:
+        - name: mongo-pay
+          image: mongo:7.0
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-pay-credentials
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-pay-credentials
+                  key: password
+          volumeMounts:
+            - name: mongo-pay-data
+              mountPath: /data/db
+          resources:
+            requests:
+              cpu: 150m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-pay-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
