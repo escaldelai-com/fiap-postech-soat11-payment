@@ -31,9 +31,9 @@ spec:
                 secretKeyRef:
                   name: mongo-pay-credentials
                   key: password
-          volumeMounts:
-            - name: mongo-pay-data
-              mountPath: /data/db
+          # volumeMounts:
+          #   - name: mongo-pay-data
+          #     mountPath: /data/db
           resources:
             requests:
               cpu: 150m
@@ -41,13 +41,13 @@ spec:
             limits:
               cpu: 400m
               memory: 512Mi
-  volumeClaimTemplates:
-    - metadata:
-        name: mongo-pay-data
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: ebs-gp3
-        resources:
-          requests:
-            storage: 5Gi
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: mongo-pay-data
+  #     spec:
+  #       accessModes:
+  #         - ReadWriteOnce
+  #       storageClassName: ebs-gp3
+  #       resources:
+  #         requests:
+  #           storage: 5Gi

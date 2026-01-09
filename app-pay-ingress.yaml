@@ -12,7 +12,8 @@ spec:
   #   hosts:
   #   - localhost
   rules:
-  - host: restaurante
+  # - host: restaurante
+  - host: a409648da07ca433da516d76d7f9a435-1490225036.sa-east-1.elb.amazonaws.com
     http:
       paths:
       - path: /app-pay(/|$)(.*)
