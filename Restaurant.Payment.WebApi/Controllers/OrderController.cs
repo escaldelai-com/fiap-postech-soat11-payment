@@ -20,6 +20,8 @@ public class OrderController(
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> PayConfirm([FromBody]OrderDto data)
     {
+        await facade.Confirm(data);
+
         return NoContent();
     }
 

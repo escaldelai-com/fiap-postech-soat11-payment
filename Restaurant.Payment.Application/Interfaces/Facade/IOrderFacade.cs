@@ -7,4 +7,6 @@ public interface IOrderFacade
 
     Task SaveOrderToPayment(OrderDto data);
 
+    Task Confirm(OrderDto data);
+
 }
