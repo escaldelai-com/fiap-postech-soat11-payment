@@ -9,3 +9,4 @@ REM -- App
 kubectl apply -f app-pay-service.yaml
 kubectl apply -f app-pay-ingress.yaml
 kubectl apply -f app-pay.yaml
+
