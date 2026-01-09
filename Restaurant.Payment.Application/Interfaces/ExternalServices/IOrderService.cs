@@ -1,8 +1,10 @@
-﻿namespace Restaurant.Payment.Application.Interfaces.ExternalServices;
+﻿using Restaurant.Payment.Application.DTO;
+
+namespace Restaurant.Payment.Application.Interfaces.ExternalServices;
 
 public interface IOrderService
 {
 
-    Task ConfirmPayment(string orderId);
+    Task ConfirmPayment(OrderDto order);
 
 }

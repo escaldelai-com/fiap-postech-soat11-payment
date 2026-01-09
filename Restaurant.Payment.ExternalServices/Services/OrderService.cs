@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Restaurant.Payment.Application.DTO;
 using Restaurant.Payment.Application.Interfaces.ExternalServices;
 using Restaurant.Payment.Application.Interfaces.WebApi;
 using System.Net.Http.Headers;
@@ -15,13 +16,13 @@ public class OrderService(
         ?? throw new ArgumentNullException("ExternalServices:Order");
 
 
-    public async Task ConfirmPayment(string orderId)
+    public async Task ConfirmPayment(OrderDto order)
     {
         using var http = new HttpClient();
         var message = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/order/pay");
 
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", security.Token);
-        message.Content = JsonContent.Create(new { orderId });
+        message.Content = JsonContent.Create(order);
 
         var response = await http.SendAsync(message);
 
