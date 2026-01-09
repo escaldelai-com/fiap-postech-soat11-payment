@@ -1,0 +1,34 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10 SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore Restaurant.Payment.slnx
+
+      - name: Build Web API project
+        run: dotnet build Restaurant.Payment.slnx --configuration Release --no-restore
+
+      # - name: Run model tests
+      #   run: dotnet test Restaurant.Payment.Model.Test/Restaurant.Payment.Model.Test.csproj --configuration Release --no-build
+
+      # - name: Run application tests
+      #   run: dotnet test Restaurant.Payment.Application.Test/Restaurant.Payment.Application.Test.csproj --configuration Release --no-build

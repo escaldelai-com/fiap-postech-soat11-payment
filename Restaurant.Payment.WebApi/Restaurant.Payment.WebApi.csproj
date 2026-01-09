@@ -9,13 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Restaurant.Payment.Application\Restaurant.Payment.Application.csproj" />
+    <ProjectReference Include="..\Restaurant.Payment.Data\Restaurant.Payment.Data.csproj" />
+    <ProjectReference Include="..\Restaurant.Payment.ExternalServices\Restaurant.Payment.ExternalServices.csproj" />
     <ProjectReference Include="..\Restaurant.Payment.Facade\Restaurant.Payment.Facade.csproj" />
+    <ProjectReference Include="..\Restaurant.Payment.Presenter\Restaurant.Payment.Presenter.csproj" />
   </ItemGroup>
 
 </Project>

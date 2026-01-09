@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: app-pay
-          image: restaurant-payment:1.0.0
+          image: 210450948776.dkr.ecr.sa-east-1.amazonaws.com/restaurante-payment:latest
           ports:
             - containerPort: 80
           env:
