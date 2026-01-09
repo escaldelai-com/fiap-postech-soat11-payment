@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-pay
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  # tls:
+  # - secretName: ingress-certificate
+  #   hosts:
+  #   - localhost
+  rules:
+  # - host: restaurante
+  - host: a409648da07ca433da516d76d7f9a435-1490225036.sa-east-1.elb.amazonaws.com
+    http:
+      paths:
+      - path: /app-pay(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: app-pay
+            port:
+              number: 80

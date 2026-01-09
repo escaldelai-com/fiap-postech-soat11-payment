@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-pay
+  labels:
+    app: app-pay
+spec:
+  template:
+    metadata:
+      labels:
+        app: app-pay
+    spec:
+      containers:
+        - name: app-pay
+          image: 210450948776.dkr.ecr.sa-east-1.amazonaws.com/restaurante-payment:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "80"
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-pay-credentials
+                  key: username
+            - name: MONGODB_PASSWORD 
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-pay-credentials
+                  key: password
+            - name: ConnectionStrings__MongoDb
+              value: "mongodb://$(MONGODB_USERNAME):$(MONGODB_PASSWORD)@mongo-pay:27017"
+            - name: Security__PublicKey
+              valueFrom:
+                secretKeyRef:
+                  name: id-keys
+                  key: public
+            - name: ExternalServices__Identification
+              value: "http://app-id"
+            - name: ExternalServices__Order
+              value: "http://app-order"
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+  selector:
+    matchLabels:
+      app: app-pay
+  replicas: 2
