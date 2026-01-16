@@ -1,4 +1,6 @@
-﻿namespace Restaurant.Payment.Application.DTO;
+﻿using Newtonsoft.Json.Linq;
+
+namespace Restaurant.Payment.Application.DTO;
 
 public class OrderDto
 {
@@ -7,13 +9,12 @@ public class OrderDto
 
     public DateTime? Data { get; set; }
 
-    public int? Numero { get; set; }
-
     public string? Status { get; set; }
 
     public ClientDto? Cliente { get; set; }
 
-    public List<OrderItemDto> Items { get; set; } = new();
+    public List<OrderItemDto> Items { get; set; } = [];
 
+    public List<PaymentInfoDto> PaymentInfo { get; set; } = [];
 
 }

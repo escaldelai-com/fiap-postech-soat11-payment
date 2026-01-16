@@ -1,0 +1,23 @@
+﻿root = true
+
+[*.cs]
+dotnet_analyzer_diagnostic.severity = warning
+
+# Simplificação na estrutura do namespace não deve ser considerado erro.
+dotnet_diagnostic.IDE0160.severity = none
+
+# Obrigar que a estrutura do namespace corresponda à estrutura de pastas polui o namespace.
+# Muitas vezes as pastas são criadas apenas para organizar os arquivos fisicamente.
+dotnet_diagnostic.IDE0130.severity = none
+
+# IFs já são separados por espaços em branco, obrigar a incluir {} em todos os ifs polui mais o código adicionando linhas desnecessárias.
+dotnet_diagnostic.IDE0011.severity = none
+
+# Preferencia por var
+dotnet_diagnostic.IDE0008.severity = none
+
+# Obrigar a utilizar _ = para ignorar valores de retorno polui o código desnecessariamente.
+dotnet_diagnostic.IDE0058.severity = none
+
+# Não gerar arquivo .xml de documentação.
+dotnet_diagnostic.IDE0005.severity = none

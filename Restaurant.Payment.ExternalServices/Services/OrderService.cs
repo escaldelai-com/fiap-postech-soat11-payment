@@ -22,7 +22,20 @@ public class OrderService(
         var message = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/order/pay");
 
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", security.Token);
-        message.Content = JsonContent.Create(order);
+        message.Content = JsonContent.Create(new { orderId = order.Id });
+
+        var response = await http.SendAsync(message);
+
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task Cancel(OrderDto order)
+    {
+        using var http = new HttpClient();
+        var message = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/order/cancel");
+
+        message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", security.Token);
+        message.Content = JsonContent.Create(new { orderId = order.Id });
 
         var response = await http.SendAsync(message);
 

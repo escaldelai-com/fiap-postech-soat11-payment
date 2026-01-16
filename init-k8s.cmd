@@ -1,9 +1,10 @@
 @echo off
 
-REM -- MongoDB
-kubectl apply -f mongo-pay-service.yaml
-kubectl apply -f mongo-pay-secrets.yaml
-kubectl apply -f mongo-pay.yaml
+REM -- Postgres
+kubectl apply -f postgres-pay-configmap.yaml
+kubectl apply -f postgres-pay-secrets.yaml
+kubectl apply -f postgres-pay-service.yaml
+kubectl apply -f postgres-pay.yaml
 
 REM -- App
 kubectl apply -f app-pay-service.yaml

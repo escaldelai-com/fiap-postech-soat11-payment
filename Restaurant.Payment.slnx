@@ -11,8 +11,10 @@
   </Folder>
   <Folder Name="/core/">
     <Project Path="Restaurant.Payment.Application/Restaurant.Payment.Application.csproj" Id="0723acc8-0c9e-4b91-9eaa-14700651958b" />
+    <Project Path="Restaurant.Payment.Domain/Restaurant.Payment.Domain.csproj" Id="3f757a77-971e-45e9-9271-1a940a1473ed" />
   </Folder>
   <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
     <File Path="LICENSE" />
     <File Path="README.md" />
   </Folder>
@@ -29,12 +31,14 @@
     <File Path="app-pay.yaml" />
     <File Path="Dockerfile" />
   </Folder>
-  <Folder Name="/Solution Items/kubernetes/mongodb/">
-    <File Path="mongo-pay-secrets.yaml" />
-    <File Path="mongo-pay-service.yaml" />
-    <File Path="mongo-pay.yaml" />
+  <Folder Name="/Solution Items/kubernetes/postgres/">
+    <File Path="postgres-pay-configmap.yaml" />
+    <File Path="postgres-pay-secrets.yaml" />
+    <File Path="postgres-pay-service.yaml" />
+    <File Path="postgres-pay.yaml" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="Restaurant.Payment.Application.Test/Restaurant.Payment.Application.Test.csproj" Id="7cc1d137-b103-4f6b-bdcf-3f36afe0548e" />
+    <Project Path="Restaurant.Payment.Domain.Test/Restaurant.Payment.Domain.Test.csproj" Id="588db1c5-6383-49f7-817c-fb0796b1c657" />
   </Folder>
 </Solution>

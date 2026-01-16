@@ -1,20 +1,35 @@
-﻿using Restaurant.Payment.Application.DTO;
+﻿using Newtonsoft.Json.Linq;
+using Restaurant.Payment.Application.DTO;
 using Restaurant.Payment.Application.Interfaces.ExternalServices;
 using Restaurant.Payment.Application.Interfaces.Facade;
+using Restaurant.Payment.Application.Interfaces.UseCases;
 
 namespace Restaurant.Payment.Facade;
 
 public class OrderFacade(
-    IOrderService service) : IOrderFacade
+    IOrderCreateUseCase useCase,
+    IIdentificationService idService,
+    IOrderPagSeguroUseCase pagSeguroUseCase,
+    IOrderConfirmUseCase confirmUseCase) : IOrderFacade
 {
-    public Task Confirm(OrderDto data)
+
+    public async Task<OrderDto> SaveOrderToPayment(OrderDto data)
     {
-        throw new NotImplementedException();
+        var result = await useCase.Create(data);
+
+        result.Cliente = await idService.GetById(data.Cliente?.Id);
+
+        return result;
     }
 
-    public async Task SaveOrderToPayment(OrderDto data)
+    public async Task<PixInfoDto> SendPayment(string orderId)
     {
-        await service.ConfirmPayment(data);
+        return await pagSeguroUseCase.SendPayment(orderId);
+    }
+
+    public async Task Confirm(JObject data)
+    {
+        await confirmUseCase.Confirm(data);
     }
 
 }

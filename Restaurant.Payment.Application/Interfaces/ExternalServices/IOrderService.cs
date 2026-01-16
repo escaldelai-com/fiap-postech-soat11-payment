@@ -7,4 +7,6 @@ public interface IOrderService
 
     Task ConfirmPayment(OrderDto order);
 
+    Task Cancel(OrderDto order);
+
 }
